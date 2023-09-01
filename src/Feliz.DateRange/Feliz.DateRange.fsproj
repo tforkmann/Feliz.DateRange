@@ -6,7 +6,7 @@
   <ItemGroup>
     <Compile Include="Types.fs" />
     <Compile Include="Interop.fs" />
-    <Compile Include="QRCodeCanvas.fs" />
+    <Compile Include="DateRangePicker.fs" />
     <Compile Include="DateRange.fs" />
   </ItemGroup>
   <PropertyGroup>

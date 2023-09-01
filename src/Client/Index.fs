@@ -3,6 +3,7 @@ module Index
 open Elmish
 open Feliz
 open Feliz.DateRange
+open System
 
 type Model = { Txt: string }
 
@@ -15,26 +16,21 @@ let update msg (model: Model) =
     | UpdateTxt txt -> { model with Txt = txt }, Cmd.none
 
 [<ReactComponent>]
-let DateRangeCanvas () =
-    DateRange.DateRangecanvas [
-        DateRangeCanvas.value "https://www.google.com"
-        DateRangeCanvas.size 600
-        DateRangeCanvas.bgColor "#ffffff"
-        DateRangeCanvas.fgColor "#000000"
-        DateRangeCanvas.level "L"
-        DateRangeCanvas.includeMargin false
-        DateRangeCanvas.imageSettings [
-            imageSettings.src "https://msuecar.azureedge.net/logos/favicon-32x32.png"
-            imageSettings.height 24
-            imageSettings.width 24
-            imageSettings.excavate true
+let DateRangePicker () =
+    DateRange.dateRangePicker [
+        dateRangePicker.months 2
+        dateRangePicker.showSelectionPreview true
+        dateRangePicker.ranges [
+            dateRangePicker.range [
+                ranges.startDate (DateTimeOffset(2019, 1, 1, 0, 0, 0, TimeSpan.Zero))
+                ranges.endDate (DateTimeOffset(2019, 1, 31, 0, 0, 0, TimeSpan.Zero))
+                ranges.key "January 2019"
+            ]
         ]
     ]
 
 let view (model: Model) (dispatch: Msg -> unit) =
     Html.div [
         prop.style [ style.height 600; style.width 600 ]
-        prop.children [
-            DateRangeCanvas()
-        ]
+        prop.children [ DateRangePicker() ]
     ]

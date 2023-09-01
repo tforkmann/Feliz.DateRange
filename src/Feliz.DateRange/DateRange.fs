@@ -6,12 +6,10 @@ open Feliz
 
 type Event = Browser.Types.Event
 
-// The !! below is used to "unsafely" expose a prop into an IChartJSProp.
 [<Erase>]
 type DateRange =
-    /// Creates a new ChartJS component.
 
-    static member inline DateRangePicker(props: IDateRangePickerProp seq) =
+    static member inline dateRangePicker(props: IDateRangePickerProp seq) =
         Interop.reactApi.createElement (Interop.DateRangePicker, createObj !!props)
 
     static member inline children(children: ReactElement list) =

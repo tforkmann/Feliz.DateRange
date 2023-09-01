@@ -9,3 +9,6 @@ type IDateRangeProp =
 type IDateRangePickerProp =
     interface
     end
+type IRangesProp =
+    interface
+    end
