@@ -34,7 +34,7 @@ type dateRangePicker =
     static member inline maxDate(maxDate: DateTimeOffset) : IDateRangePickerProp =
         Interop.mkDateRangePickerProp "maxDate" maxDate
 
-    static member inline staticRanges(props: IStaticRangeProp []) : IDateRangePickerProp =
+    static member inline staticRanges(props: IStaticRangesProp []) : IDateRangePickerProp =
         (!!("staticRanges" ==> props))
     static member inline ranges(props: IRangesProp seq) : IDateRangePickerProp = (!!("ranges" ==> props))
 
@@ -61,13 +61,24 @@ type ranges =
 
 [<Erase>]
 type staticRanges =
+    static member inline staticRange props : IStaticRangesProp = !!(createObj !!props)
+[<Erase>]
+type staticRange =
+
     static member inline label(label: string) : IStaticRangeProp =
         Interop.mkStaticRangeProp "label" label
+    // static member inline isSelected(isSelected: bool) : IStaticRangeProp =
+    //     Interop.mkStaticRangeProp "isSelected" isSelected
 
-    static member inline range(range: {| startDate: DateTimeOffset; endDate: DateTimeOffset |}) : IStaticRangeProp =
+    static member inline range(range: unit -> {| startDate: DateTimeOffset; endDate: DateTimeOffset |}) : IStaticRangeProp =
         Interop.mkStaticRangeProp "range" range
     static member inline hasCustomRendering(hasCustomRendering: bool) : IStaticRangeProp =
         Interop.mkStaticRangeProp "hasCustomRendering" hasCustomRendering
-    //make isSelected a function that takes a handler and returns a bool
-    static member inline isSelected(handler: unit -> bool) : IStaticRangeProp =
-        Interop.mkStaticRangeProp "isSelected" handler
+    static member inline isSelected
+        (handler :
+            {|
+                range1: {| startDate: DateTimeOffset; endDate: DateTimeOffset |}
+                range2: {| startDate: DateTimeOffset; endDate: DateTimeOffset |}
+            |}
+            -> bool): IStaticRangeProp =
+        !!("isSelected" ==> handler)

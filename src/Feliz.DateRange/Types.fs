@@ -13,6 +13,9 @@ type IDateRangePickerProp =
 type IRangesProp =
     interface
     end
+type IStaticRangesProp =
+    interface
+    end
 type IStaticRangeProp =
     interface
     end
