@@ -42,9 +42,9 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
 let summary = "Feliz React Binding for react-date-range"
 
-let copyright = "Copyright \169 2022"
+let copyright = "Copyright \169 2023"
 let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.DateRange_logo.png"
-let licenceUrl = "https://github.com/tforkmann/Feliz.DateRange/blob/master/LICENSE.md"
+let licenceUrl = "https://github.com/tforkmann/Feliz.DateRange/blob/main/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project

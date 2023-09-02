@@ -31,19 +31,22 @@ dotnet run
 Here is an example DateRange
 ```fs
 [<ReactComponent>]
-let DateRangeCanvas () =
-    DateRange.DateRangecanvas [
-        DateRangeCanvas.value "https://www.google.com"
-        DateRangeCanvas.size 600
-        DateRangeCanvas.bgColor "#ffffff"
-        DateRangeCanvas.fgColor "#000000"
-        DateRangeCanvas.level "L"
-        DateRangeCanvas.includeMargin false
-        DateRangeCanvas.imageSettings [
-            imageSettings.src "https://msuecar.azureedge.net/logos/favicon-32x32.png"
-            imageSettings.height 24
-            imageSettings.width 24
-            imageSettings.excavate true
+let DateRangePicker (startDate,endDate,setStartDate,setEndDate) =
+    DateRange.dateRangePicker [
+        dateRangePicker.months 2
+        dateRangePicker.showSelectionPreview true
+        dateRangePicker.moveRangeOnFirstSelection false
+        dateRangePicker.direction Direction.Horizontal
+        dateRangePicker.locale DateTime.Locales.German
+        dateRangePicker.onChange (fun handler ->
+            setStartDate handler.range1.startDate
+            setEndDate handler.range1.endDate
+        )
+        dateRangePicker.ranges [
+            dateRangePicker.range [
+                ranges.startDate startDate
+                ranges.endDate endDate
+            ]
         ]
     ]
 ```
