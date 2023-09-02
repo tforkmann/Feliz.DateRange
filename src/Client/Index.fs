@@ -47,8 +47,8 @@ let DateRangePicker (startDate, endDate, setStartDate, setEndDate) =
             staticRanges.staticRange [
                 staticRange.label "Letzer Monat"
                 staticRange.range (fun _ -> {|
-                    startDate = now.AddDays(-30) |> DateTimeOffset
-                    endDate = now |> DateTimeOffset
+                    startDate = now.AddMonths(-1).StartOfMonth() |> DateTimeOffset
+                    endDate = now.AddMonths(-1).EndOfMonth() |> DateTimeOffset
                 |})
                 staticRange.hasCustomRendering false
                 staticRange.isSelected (fun range -> false)
