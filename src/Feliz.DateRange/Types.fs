@@ -16,7 +16,13 @@ type IRangesProp =
 type IStaticRangesProp =
     interface
     end
+type IInputRangesProp =
+    interface
+    end
 type IStaticRangeProp =
+    interface
+    end
+type IInputRangeProp =
     interface
     end
 

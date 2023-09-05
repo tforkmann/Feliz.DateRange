@@ -22,7 +22,8 @@ type dateRangePicker =
         Interop.mkDateRangePickerProp "moveRangeOnFirstSelection" moveRangeOnFirstSelection
     static member inline direction(direction: Direction) : IDateRangePickerProp =
         Interop.mkDateRangePickerProp "direction" direction
-
+    static member inline editableDateInputs(editableDateInputs: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "editableDateInputs" editableDateInputs
     static member inline color(color: string) : IDateRangePickerProp =
         Interop.mkDateRangePickerProp "color" color
     static member inline locale(locale: ILocale) : IDateRangePickerProp =
@@ -36,6 +37,8 @@ type dateRangePicker =
 
     static member inline staticRanges(props: IStaticRangesProp []) : IDateRangePickerProp =
         (!!("staticRanges" ==> props))
+    static member inline inputRanges(props: IInputRangesProp []) : IDateRangePickerProp =
+        (!!("inputRanges" ==> props))
     static member inline ranges(props: IRangesProp seq) : IDateRangePickerProp = (!!("ranges" ==> props))
 
     static member inline range props : IRangesProp = !!(createObj !!props)
@@ -59,6 +62,7 @@ type ranges =
     static member inline endDate(endDate: DateTimeOffset) : IRangesProp = Interop.mkRangesProp "endDate" endDate
     static member inline key(key: string) : IRangesProp = Interop.mkRangesProp "key" key
 
+
 [<Erase>]
 type staticRanges =
     static member inline staticRange props : IStaticRangesProp = !!(createObj !!props)
@@ -67,9 +71,6 @@ type staticRange =
 
     static member inline label(label: string) : IStaticRangeProp =
         Interop.mkStaticRangeProp "label" label
-    // static member inline isSelected(isSelected: bool) : IStaticRangeProp =
-    //     Interop.mkStaticRangeProp "isSelected" isSelected
-
     static member inline range(range: unit -> {| startDate: DateTimeOffset; endDate: DateTimeOffset |}) : IStaticRangeProp =
         Interop.mkStaticRangeProp "range" range
     static member inline hasCustomRendering(hasCustomRendering: bool) : IStaticRangeProp =
@@ -82,3 +83,16 @@ type staticRange =
             |}
             -> bool): IStaticRangeProp =
         !!("isSelected" ==> handler)
+
+[<Erase>]
+type inputRanges =
+    static member inline inputRange props : IInputRangesProp = !!(createObj !!props)
+[<Erase>]
+type inputRange =
+
+    static member inline label(label: string) : IInputRangeProp =
+        Interop.mkInputRangeProp "label" label
+    static member inline range(range: int -> {| startDate: DateTimeOffset; endDate: DateTimeOffset |}) : IInputRangeProp =
+        Interop.mkInputRangeProp "range" range
+    static member inline getCurrentValue(range: {| startDate: DateTimeOffset; endDate: DateTimeOffset |} ->int) : IInputRangeProp =
+        Interop.mkInputRangeProp "getCurrentValue" range

@@ -63,6 +63,28 @@ let DateRangePicker (startDate, endDate, setStartDate, setEndDate) =
                 staticRange.isSelected (fun range -> false)
             ]
         |]
+        dateRangePicker.inputRanges [|
+            inputRanges.inputRange [
+                inputRange.label "Tage bis heute"
+                inputRange.range (fun v -> {|
+                    startDate = now.AddDays(-v) |> DateTimeOffset
+                    endDate = now |> DateTimeOffset
+                |})
+                inputRange.getCurrentValue (fun v ->
+                    ExternalDateFns.differenceInCalendarDays (now.EndOfDay() |> DateTimeOffset) v.startDate
+                )
+            ]
+            inputRanges.inputRange [
+                inputRange.label "Tage ab heute"
+                inputRange.range (fun range -> {|
+                    startDate = now |> DateTimeOffset
+                    endDate = now.AddDays(range) |> DateTimeOffset
+                |})
+                inputRange.getCurrentValue (fun range ->
+                    ExternalDateFns.differenceInCalendarDays range.endDate (now.StartOfDay() |> DateTimeOffset)
+                )
+            ]
+        |]
     ]
 
 let view (model: Model) (dispatch: Msg -> unit) =
