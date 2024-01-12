@@ -7,7 +7,6 @@ open System
 open Browser.Dom
 open Fable.DateFunctions
 
-
 type Model = {
     StartDate: DateTimeOffset
     EndDate: DateTimeOffset
