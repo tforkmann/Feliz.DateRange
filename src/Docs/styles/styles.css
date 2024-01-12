@@ -1,9 +1,11 @@
 @charset "utf-8";
 
+@import "react-date-range/dist/styles";
+@import "react-date-range/dist//theme/default";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* a.link {
     @apply text-primary underline font-semibold;
 } */
