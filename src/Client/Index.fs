@@ -4,7 +4,6 @@ open Elmish
 open Feliz
 open Feliz.DateRange
 open System
-open Browser.Dom
 open Fable.DateFunctions
 
 type Model = {
