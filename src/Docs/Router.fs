@@ -9,7 +9,6 @@ type Page =
     | Use
     | DateRange
 
-
 [<RequireQualifiedAccess>]
 module Page =
     let defaultPage = Install
