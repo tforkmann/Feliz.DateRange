@@ -62,7 +62,7 @@
         "chartjs-plugin-zoom": "1.2.1",
         "daisyui": "^3.0.0",
         "hammerjs": "^2.0.8",
-        "react-date-range": "1.4.0",
+        "react-date-range": "2.0.0-alpha.4",
         "tailwindcss": "^3.0.24",
         "use-sync-external-store": "^1.2.0"
     }
