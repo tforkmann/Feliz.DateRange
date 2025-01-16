@@ -1,3 +1,5 @@
+#### 0.2.1 - 2025-01-16
+* Move then to the wrong type
 #### 0.2.0 - 2025-01-16
 * Add lots of props
 #### 0.1.4 - 2024-01-12
