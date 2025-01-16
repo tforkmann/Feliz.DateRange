@@ -96,3 +96,25 @@ type inputRange =
         Interop.mkInputRangeProp "range" range
     static member inline getCurrentValue(range: {| startDate: DateTimeOffset; endDate: DateTimeOffset |} ->int) : IInputRangeProp =
         Interop.mkInputRangeProp "getCurrentValue" range
+    static member inline rangeColors(colors: string []) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "rangeColors" colors
+    static member inline maxRange(date: DateTimeOffset) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "maxRange" date
+    static member inline dragSelectionEnabled (dragSelectionEnabled: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "dragSelectionEnabled" dragSelectionEnabled
+    static member inline months(months: int) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "months" months
+    static member inline showSelectionPreview(showSelectionPreview: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "showSelectionPreview" showSelectionPreview
+    static member inline showMonthAndYearPickers(showMonthAndYearPickers: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "showMonthAndYearPickers" showMonthAndYearPickers
+    static member inline showMonthArrow(showMonthArrow: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "showMonthArrow" showMonthArrow
+    static member inline moveRangeOnFirstSelection(moveRangeOnFirstSelection: bool) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "moveRangeOnFirstSelection" moveRangeOnFirstSelection
+    static member inline color(color: string) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "color" color
+    static member inline date(date: DateTimeOffset) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "date" date
+    static member inline locale(locale: ILocale) : IDateRangePickerProp =
+        Interop.mkDateRangePickerProp "locale" locale
